@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student ID Card Registration</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">ID Card Registration</div>
+    <h1>Student ID Card Details</h1>
+    <p class="subtitle">Fill in the details below. Every submission is saved automatically to the Excel sheet.</p>
+
+    <div class="card">
+      <div class="stub-no">FORM&nbsp;NO. IDC-{{ form_no }}</div>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" action="{{ url_for('index') }}" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Full name" value="{{ form.get('name', '') }}" required>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="student_class">Class</label>
+            <select id="student_class" name="student_class" required>
+              <option value="" {% if not form.get('student_class') %}selected{% endif %} disabled>Select class</option>
+              {% for bg in ['LKG','UKG','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'] %}
+                <option value="{{ bg }}" {% if form.get('student_class') == bg %}selected{% endif %}>{{ bg }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" value="{{ form.get('dob', '') }}" required>
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="blood_group">Blood Group</label>
+            <select id="blood_group" name="blood_group" required>
+              <option value="" {% if not form.get('blood_group') %}selected{% endif %} disabled>Select blood group</option>
+              {% for bg in ['A+','A-','B+','B-','AB+','AB-','O+','O-'] %}
+                <option value="{{ bg }}" {% if form.get('blood_group') == bg %}selected{% endif %}>{{ bg }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile Number <span class="hint">(please enter only 10 numbers)</span></label>
+            <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number"
+                   value="{{ form.get('mobile', '') }}" maxlength="10" pattern="\d{10}"
+                   inputmode="numeric" title="Please enter only 10 numbers" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="father_name">Father's Name</label>
+          <input type="text" id="father_name" name="father_name" placeholder="Father's full name" value="{{ form.get('father_name', '') }}" required>
+        </div>
+
+        <div class="field">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" placeholder="Full postal address" required>{{ form.get('address', '') }}</textarea>
+        </div>
+
+        <button type="submit">Submit Details</button>
+      </form>
+    </div>
+
+    <p class="footnote">Submitted details are stored in <code>id_card_data.xlsx</code> on the server.</p>
+  </div>
+
+  <script>
+    const mobileInput = document.getElementById('mobile');
+    mobileInput.addEventListener('input', () => {
+      mobileInput.value = mobileInput.value.replace(/\D/g, '').slice(0, 10);
+    });
+  </script>
+</body>
+</html>

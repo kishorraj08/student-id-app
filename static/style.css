@@ -1,0 +1,211 @@
+/* ---- Design tokens ----
+   Palette: deep ledger-navy (#12203A), card-ivory (#F7F4EC),
+   brass accent (#B9922F), stamp-red (#9E2B25), muted slate (#5B6472)
+   Type: 'Fraunces' (display serif, restrained) + 'Inter' (body/utility)
+   Signature: a perforated "ID card" panel with a corner punch-hole
+   and a running stub number, like a real card is being issued.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #12203A;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(185,146,47,0.10), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(158,43,37,0.08), transparent 45%);
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #12203A;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 640px;
+}
+
+.eyebrow {
+  color: #B9922F;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #F7F4EC;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  color: #B7BECB;
+  font-size: 14px;
+  margin: 0 0 28px 0;
+}
+
+.card {
+  position: relative;
+  background: #F7F4EC;
+  border-radius: 14px;
+  padding: 36px 32px 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+/* punch hole, like the corner of an ID card stub */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #12203A;
+  box-shadow: inset 0 0 0 3px #F7F4EC;
+}
+
+.stub-no {
+  position: absolute;
+  top: 22px;
+  right: 46px;
+  font-family: 'Inter', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #9AA2AF;
+}
+
+.flash {
+  background: #FBEAE9;
+  border: 1px solid #9E2B25;
+  color: #7A211C;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.flash ul { margin: 0; padding-left: 18px; }
+
+form { display: grid; gap: 18px; }
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #5B6472;
+  margin-bottom: 6px;
+}
+
+.hint {
+  font-weight: 400;
+  text-transform: none;
+  color: #9E2B25;
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 8px;
+  border: 1.5px solid #D8D2C2;
+  background: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  color: #12203A;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #B9922F;
+  box-shadow: 0 0 0 3px rgba(185,146,47,0.18);
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 480px) {
+  .row-2 { grid-template-columns: 1fr; }
+  .card { padding: 28px 20px 22px; }
+}
+
+textarea { resize: vertical; min-height: 70px; }
+
+button {
+  margin-top: 6px;
+  background: #12203A;
+  color: #F7F4EC;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+button:hover { background: #1B2E52; }
+button:active { transform: translateY(1px); }
+
+.footnote {
+  text-align: center;
+  color: #6E7686;
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+/* success page */
+.success-card {
+  text-align: center;
+  padding: 48px 32px;
+}
+.success-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #12203A;
+  color: #B9922F;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.success-card h2 {
+  font-family: 'Fraunces', serif;
+  color: #12203A;
+  margin: 0 0 8px;
+}
+.success-card p { color: #5B6472; font-size: 14px; margin: 0 0 22px; }
+.success-card a {
+  display: inline-block;
+  color: #12203A;
+  font-weight: 600;
+  font-size: 13.5px;
+  text-decoration: none;
+  border-bottom: 2px solid #B9922F;
+  padding-bottom: 2px;
+}
