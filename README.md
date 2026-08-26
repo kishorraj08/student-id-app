@@ -1,6 +1,6 @@
 # Student ID Card Registration App
 
-By using Cladue 
+By using Claude 
 A web application built with Flask that allows students to register 
 and generate their student ID cards online.
 
@@ -22,4 +22,4 @@ and generate their student ID cards online.
 
 ## Author
 Kishor Raj S -First year ECE Student, Sathyabama Institute of Science and Technology.
-This is my First project for enter into my dream IT companies 
+This is my First project towards entering my dream IT company 
