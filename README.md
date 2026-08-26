@@ -22,4 +22,4 @@ and generate their student ID cards online.
 
 ## Author
 Kishor Raj S -First year ECE Student, Sathyabama Institute of Science and Technology.
-This is my First project towards entering my dream IT company 
+This is my First project towards entering my dream MNC,IT companies
