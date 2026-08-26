@@ -21,5 +21,5 @@ and generate their student ID cards online.
 4. Open browser at `http://localhost:5000`
 
 ## Author
-Kishor Raj S - ECE Student, Sathyabama Institute of Science and Technology
+Kishor Raj S -First year ECE Student, Sathyabama Institute of Science and Technology.
 This is my First project for enter into my dream IT companies 
